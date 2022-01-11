@@ -1,69 +1,52 @@
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 from dash.dependencies import Input, Output
+import dash_bootstrap_components as dbc
 import plotly.express as px
 import pandas as pd
 import pathlib
-from app import app
 
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../../datasets").resolve()
 
-df = pd.read_excel(DATA_PATH.joinpath("2020_region.xlsx"),sheet_name= 'Data',header=0)  # GregorySmith Kaggle
-
-regions = df.Region.unique()
+df_region = pd.read_excel(DATA_PATH.joinpath("2020_region.xlsx"),sheet_name= 'Data',header=0)  # GregorySmith Kaggle
+df_country = pd.read_excel(DATA_PATH.joinpath("2020_country.xlsx"),sheet_name= 'Data',header=0)
+regions = df_region.Region.unique()
+countrys = df_country.Country.unique()
 
 layout = html.Div([
-    html.H1('Survey on Gender Equality at Home', style={"textAlign": "center"}),
+    html.H1('Survey on Gender Equality at Home YEAR: 2020', style={"textAlign": "center"}),
+
+    html.H3('Choose by'),
 
     html.Div([
-
-    html.Div([
-        dcc.Dropdown(
-        id="dropdown",
+    dbc.Row([
+        dbc.Col(html.Div([html.H5("Region:")]) ,width = {"offset": 1}),
+        dbc.Col( dcc.Dropdown(
+        id="regions_dropdown",
         options=[{"label": x, "value": x} for x in regions],
         value=regions[0],
         clearable=False,
-    ),
-    
-    dcc.Graph(id="2020_bar-chart"),
+    ), width={"size": 3}, ),
+        dbc.Col(dbc.Button(
+            "Ok", id="region_button", className="me-2", n_clicks=0
+        )),
 
-    html.Hr(),
+        dbc.Col(html.Div([html.H5("Country:")]) ,width = {"offset": 1} ),
 
-    dcc.RadioItems(
-        id='region-radio',
-        options=[{'label': k, 'value': k} for k in regions],
-        
-    ),
-    dcc.Graph(id="2020_bar-chart1"),
+        dbc.Col( dcc.Dropdown(
+        id="countrys_dropdown",
+        options=[{"label": x, "value": x} for x in countrys],
+        value=countrys[0],
+        clearable=False,
+    ), width={"size": 3},),
+    dbc.Col(dbc.Button(
+            "Ok", id="country_button", className="me-2", n_clicks=0
+        ),),
+    ]),
+   
 
         ], className="row")
 
-        ]),
-
-    dcc.Graph(id='my-bar', figure={}),
 ])
-
-@app.callback(
-   Output("2020_bar-chart", "figure"),
-   [Input("dropdown", "value")]
-)
-def update_bar_chart(region):
-    mask = df["Region"] == region
-    fig = px.bar(df[mask], x="Gender", y=["a1_agree","a1_neutral","a1_disagree"], 
-                barmode="group",title="A.1. How much do you agree or disagree with the following statement?  “Men and women should have equal opportunities \n (e.g. in education, jobs, household decision-making).")
-    return fig
-
-@app.callback(
-   Output("2020_bar-chart1", "figure"),
-   [Input("region-radio", "value")]
-)
-def update_bar_chart1(region):
-    mask = df["Region"] == region
-    fig = px.bar(df[mask], x="Gender", y=["a3_yes","a3_no"], 
-                barmode="group",title="A.3.  Last week, did you do any work for pay, do any kind of business, farming or other activity to generate income, even if only for one hour? ")
-        
-    return fig
-
-
