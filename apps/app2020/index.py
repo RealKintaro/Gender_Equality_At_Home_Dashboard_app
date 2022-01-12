@@ -45,7 +45,7 @@ layout = html.Div([
             "Ok", id="country_button", className="me-2", n_clicks=0
         ),),
     ]),
-   
+
 
         ], className="row")
 
