@@ -61,7 +61,7 @@ def update_bar_chart(region):
 )
 def update_bar_chart1(region):
     mask = df["Region"] == region
-    fig = px.bar(df[mask], x="Gender", y=["a3_yes","a3_no"], 
+    fig = px.bar(df[mask], x="Gender", y=["a3_yes","a3_no","a1_agree","a1_neutral","a1_disagree"], 
                 barmode="group",title="A.3.  Last week, did you do any work for pay, do any kind of business, farming or other activity to generate income, even if only for one hour? ")
         
     return fig
