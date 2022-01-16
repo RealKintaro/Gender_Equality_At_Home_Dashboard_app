@@ -1,4 +1,5 @@
 
+from queue import Empty
 import pandas as pd
 import pathlib
 
@@ -19,7 +20,7 @@ region_codebook2020 = region_codebook_df.query('Wave == "all" | Wave == "wave 1"
 country_codebook2020 = country_codebook_df.query('Wave == "all" | Wave == "wave 1"')
 
 covidc =  country_codebook2020.query(" `Category theme` == 'covid' | `Category theme`==''")
-democ =  country_codebook2020.query(" `Category theme` == 'demographics' | `Category theme`==''")
+democ =  country_codebook2020.query(" `Category theme` == 'demographics' | `Category theme`=='' & Variable")
 naac =  country_codebook2020.query(" `Category theme` == 'norms, access, and agency' | `Category theme`==''")
 tcwc =  country_codebook2020.query(" `Category theme` == 'time spent, care, and work' | `Category theme`==''")
 
@@ -31,18 +32,19 @@ tcwr =  region_codebook2020.query(" `Category theme` == 'time spent, care, and w
 i=0
 mask1 = []
 figlist = []
-for q in tcwc['[old] Parameter or Survey Question'].str.strip().unique():
+for q in democ['[old] Parameter or Survey Question'].str.strip().unique():
         mask = df_country["Country"] == 'Canada'
-        test= tcwc["Wave"].where(tcwc['[old] Parameter or Survey Question'] == q).unique()
+        test= democ["Wave"].where(democ['[old] Parameter or Survey Question'] == q).unique()
         if 'wave 1' in test:
-                query = tcwc['Variable'].where(tcwc['[old] Parameter or Survey Question'] == q)
+                query = democ['Variable'].where(democ['[old] Parameter or Survey Question'] == q)
                 query.dropna(inplace=True)
                 mask1.append(query.values)
         elif 'all' in test:
-                query = tcwc['Wave 1 Variable'].where(tcwc['[old] Parameter or Survey Question'] == q)
+                query = democ['Wave 1 Variable'].where(democ['[old] Parameter or Survey Question'] == q)
                 query.dropna(inplace=True)
                 mask1.append(query.values)
-        print(mask1[i])
+        if len(mask1[i]) != 0:
+                print(mask1[i])
         i+=1
         
 

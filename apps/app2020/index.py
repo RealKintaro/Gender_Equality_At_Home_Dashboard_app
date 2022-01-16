@@ -187,7 +187,7 @@ country_row = html.Div([
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
                 dbc.Row(children=[
-                    generate_democ_graph(i) for i in range(0,len(democ['[old] Parameter or Survey Question'].str.strip().unique()))
+                    generate_democ_graph(i) for i in range(1,len(democ['[old] Parameter or Survey Question'].str.strip().unique()))
         ]),
             ]))),
             id="democ_collap",
@@ -369,11 +369,12 @@ def demor_content(n_clicks,region):
                 query = demor['Wave 1 Variable'].where(demor['[old] Parameter or Survey Question'] == q)
                 query.dropna(inplace=True)
                 mask1.append(query.values)
-        
-        fig =  px.bar(df_region[mask], x="Gender", y= mask1[i], 
+        if len(mask1[i]) != 0:
+            fig =  px.bar(df_region[mask], x="Gender", y= mask1[i], 
                 barmode="group",title= q)
+            figlist.append(fig)
         i+=1
-        figlist.append(fig)
+        
     
     return figlist       
 @app.callback(
@@ -461,11 +462,11 @@ def covidc_content(n_clicks,Country):
     return figlist
 
 @app.callback(
-    [Output('democ-{}'.format(i), 'figure') for i in range(0,len(democ['[old] Parameter or Survey Question'].str.strip().unique()))],
+    [Output('democ-{}'.format(i), 'figure') for i in range(1,len(democ['[old] Parameter or Survey Question'].str.strip().unique()))],
     [Input("democ_collap_btn", "n_clicks")],
     [Input("countrys_dropdown", "value")]
 )
-def demo_content(n_clicks,country):
+def democ_content(n_clicks,country):
     i=0
     mask1 = []
     figlist = []
@@ -480,11 +481,12 @@ def demo_content(n_clicks,country):
                 query = democ['Wave 1 Variable'].where(democ['[old] Parameter or Survey Question'] == q)
                 query.dropna(inplace=True)
                 mask1.append(query.values)
-        
-        fig =  px.bar(df_country[mask], x="Gender", y= mask1[i], 
+        if len(mask1[i]) != 0:
+            fig =  px.bar(df_country[mask], x="Gender", y= mask1[i], 
                 barmode="group",title= q)
+            figlist.append(fig)
         i+=1
-        figlist.append(fig)
+        
     
     return figlist       
 @app.callback(
