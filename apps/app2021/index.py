@@ -12,13 +12,18 @@ from app import app,server
 PATH = pathlib.Path(__file__).parent
 DATA_PATH = PATH.joinpath("../../datasets").resolve()
 
-df_region = pd.read_excel(DATA_PATH.joinpath("2021_region.xlsx"),sheet_name= 'Data',header=0)  # GregorySmith Kaggle
-df_country = pd.read_excel(DATA_PATH.joinpath("2021_country.xlsx"),sheet_name= 'Data',header=0)
+df_regionall = pd.read_excel(DATA_PATH.joinpath("region_allyears.xlsx"),sheet_name= 'Data',header=0)  # GregorySmith Kaggle
+df_countryall = pd.read_excel(DATA_PATH.joinpath("country_allyears.xlsx"),sheet_name= 'Data',header=0)
+
+df_region = df_regionall.query('Year == 2021')
+df_country = df_countryall.query('Year == 2021')
+
+
 region_codebook_df = pd.read_excel(DATA_PATH.joinpath("region_allyears.xlsx"),sheet_name= 'Codebook',header=0)
 country_codebook_df = pd.read_excel(DATA_PATH.joinpath("country_allyears.xlsx"),sheet_name= 'Codebook',header=0)
 
-regions = df_region.region.unique()
-countrys = df_country.subregion.unique()
+regions = df_region.Region.unique()
+countrys = df_country.Subregion.unique()
 
 region_codebook2021 = region_codebook_df.query('Wave == "all" | Wave == "wave 2"')
 country_codebook2021 = country_codebook_df.query('Wave == "all" | Wave == "wave 2"')
@@ -187,7 +192,7 @@ country_row = html.Div([
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
                 dbc.Row(children=[
-                    generate_democ_graph(i) for i in range(1,len(democ['Parameter or Survey Question'].str.strip().unique()))
+                    generate_democ_graph(i) for i in range(0,len(democ['Parameter or Survey Question'].str.strip().unique()))
         ]),
             ]))),
             id="democ_collap21",
@@ -326,19 +331,19 @@ def toggle_tcwr_collap21(n, is_open):
     [Input("covr_collap21_btn", "n_clicks")],
     [Input("regions_dropdown", "value")]
 )
-def covidr_content(n_clicks,region):
+def covidr_content(n_clicks,Region):
     i=0
     mask1 = []
     figlist = []
     for q in covidr['Parameter or Survey Question'].str.strip().unique():
-        mask = df_region["region"] == region
+        mask = df_region["Region"] == Region
 
         query = covidr['Variable Name'].where(covidr['Parameter or Survey Question'] == q)
         query.dropna(inplace=True)
         mask1.append(query.values)
 
         
-        fig =  px.bar(df_region[mask], x="gender", y= mask1[i], 
+        fig =  px.bar(df_region[mask], x="Gender", y= mask1[i], 
                 barmode="group",title= q)
         i+=1
         figlist.append(fig)
@@ -350,18 +355,18 @@ def covidr_content(n_clicks,region):
     [Input("demor_collap21_btn", "n_clicks")],
     [Input("regions_dropdown", "value")]
 )
-def demor_content(n_clicks,region):
+def demor_content(n_clicks,Region):
     i=0
     mask1 = []
     figlist = []
     for q in demor['Parameter or Survey Question'].str.strip().unique():
-        mask = df_region["region"] == region
+        mask = df_region["Region"] == Region
         query = demor['Variable Name'].where(demor['Parameter or Survey Question'] == q)
         query.dropna(inplace=True)
         mask1.append(query.values)
 
         if len(mask1[i]) != 0:
-            fig =  px.bar(df_region[mask], x="gender", y= mask1[i], 
+            fig =  px.bar(df_region[mask], x="Gender", y= mask1[i], 
                 barmode="group",title= q)
             figlist.append(fig)
         i+=1
@@ -372,16 +377,16 @@ def demor_content(n_clicks,region):
     [Output('naar21-{}'.format(i), 'figure') for i in range(0,len(naar['Parameter or Survey Question'].str.strip().unique()))],
     [Input("naar_collap21_btn", "n_clicks")],
     [Input("regions_dropdown", "value")])
-def naar_content(n_clicks,region):
+def naar_content(n_clicks,Region):
     i=0
     mask1 = []
     figlist = []
     for q in naar['Parameter or Survey Question'].str.strip().unique():
-        mask = df_region["region"] == region
+        mask = df_region["Region"] == Region
         query = naar['Variable Name'].where(naar['Parameter or Survey Question'] == q)
         query.dropna(inplace=True)
         mask1.append(query.values)
-        fig =  px.bar(df_region[mask], x="gender", y= mask1[i], 
+        fig =  px.bar(df_region[mask], x="Gender", y= mask1[i], 
                 barmode="group",title= q)
         i+=1
         figlist.append(fig)
@@ -392,16 +397,16 @@ def naar_content(n_clicks,region):
     [Output('tcwr21-{}'.format(i), 'figure') for i in range(0,len(tcwr['Parameter or Survey Question'].str.strip().unique()))],
     [Input("tcwr_collap21_btn", "n_clicks")],
     [Input("regions_dropdown", "value")])
-def tcwr_content(n_clicks,region):
+def tcwr_content(n_clicks,Region):
     i=0
     mask1 = []
     figlist = []
     for q in tcwr['Parameter or Survey Question'].str.strip().unique():
-        mask = df_region["region"] == region
+        mask = df_region["Region"] == Region
         query = tcwr['Variable Name'].where(tcwr['Parameter or Survey Question'] == q)
         query.dropna(inplace=True)
         mask1.append(query.values)
-        fig =  px.bar(df_region[mask], x="gender", y= mask1[i], 
+        fig =  px.bar(df_region[mask], x="Gender", y= mask1[i], 
                 barmode="group",title= q)
         i+=1
         figlist.append(fig)
@@ -418,11 +423,11 @@ def covidc_content(n_clicks,Country):
     mask1 = []
     figlist = []
     for q in covidc['Parameter or Survey Question'].str.strip().unique():
-        mask = df_country["subregion"] == Country
+        mask = df_country["Subregion"] == Country
         query = covidc['Variable'].where(covidc['Parameter or Survey Question'] == q)
         query.dropna(inplace=True)
         mask1.append(query.values)
-        fig =  px.bar(df_country[mask], x="gender", y= mask1[i], 
+        fig =  px.bar(df_country[mask], x="Gender", y= mask1[i], 
                 barmode="group",title= q)
         i+=1
         figlist.append(fig)
@@ -430,7 +435,7 @@ def covidc_content(n_clicks,Country):
     return figlist
 
 @app.callback(
-    [Output('democ21-{}'.format(i), 'figure') for i in range(1,len(democ['Parameter or Survey Question'].str.strip().unique()))],
+    [Output('democ21-{}'.format(i), 'figure') for i in range(0,len(democ['Parameter or Survey Question'].str.strip().unique()))],
     [Input("democ_collap21_btn", "n_clicks")],
     [Input("countrys_dropdown", "value")]
 )
@@ -439,18 +444,17 @@ def democ_content(n_clicks,country):
     mask1 = []
     figlist = []
     for q in democ['Parameter or Survey Question'].str.strip().unique():
-        mask = df_country["subregion"] == country
+        mask = df_country["Subregion"] == country
         query = democ['Variable'].where(democ['Parameter or Survey Question'] == q)
         query.dropna(inplace=True)
         mask1.append(query.values)
 
         if len(mask1[i]) != 0:
-            fig =  px.bar(df_country[mask], x="gender", y= mask1[i], 
+            fig =  px.bar(df_country[mask], x="Gender", y= mask1[i], 
                 barmode="group",title= q)
             figlist.append(fig)
         i+=1
         
-    
     return figlist       
 @app.callback(
     [Output('naac21-{}'.format(i), 'figure') for i in range(0,len(naac['Parameter or Survey Question'].str.strip().unique()))],
@@ -461,11 +465,11 @@ def naac_content(n_clicks,country):
     mask1 = []
     figlist = []
     for q in naac['Parameter or Survey Question'].str.strip().unique():
-        mask = df_country["subregion"] == country
+        mask = df_country["Subregion"] == country
         query = naac['Variable'].where(naac['Parameter or Survey Question'] == q)
         query.dropna(inplace=True)
         mask1.append(query.values)   
-        fig =  px.bar(df_country[mask], x="gender", y= mask1[i], 
+        fig =  px.bar(df_country[mask], x="Gender", y= mask1[i], 
                 barmode="group",title= q)
         i+=1
         figlist.append(fig)
@@ -481,11 +485,11 @@ def tcwc_content(n_clicks,country):
     mask1 = []
     figlist = []
     for q in tcwc['Parameter or Survey Question'].str.strip().unique():
-        mask = df_country["subregion"] == country
+        mask = df_country["Subregion"] == country
         query = tcwc['Variable'].where(tcwc['Parameter or Survey Question'] == q)
         query.dropna(inplace=True)
         mask1.append(query.values)
-        fig =  px.bar(df_country[mask], x="gender", y= mask1[i], 
+        fig =  px.bar(df_country[mask], x="Gender", y= mask1[i], 
                 barmode="group",title= q)
         i+=1
         figlist.append(fig)
