@@ -28,15 +28,15 @@ countrys = df_country.Subregion.unique()
 region_codebook2021 = region_codebook_df.query('Wave == "all" | Wave == "wave 2"')
 country_codebook2021 = country_codebook_df.query('Wave == "all" | Wave == "wave 2"')
 
-covidc =  country_codebook2021.query(" `Category theme` == 'covid' | `Category theme`==''")
-democ =  country_codebook2021.query(" `Category theme` == 'demographics' | `Category theme`==''")
-naac =  country_codebook2021.query(" `Category theme` == 'norms, access, and agency' | `Category theme`==''")
+covidc =  country_codebook2021.query(" `Category theme` == 'covid'")
+democ =  country_codebook2021.query(" `Category theme` == 'demographics' & Variable != 'Gender'")
+naac =  country_codebook2021.query(" `Category theme` == 'norms, access, and agency'")
 tcwc =  country_codebook2021.query(" `Category theme` == 'time spent, care, and work' | `Category theme`==''")
 
-covidr =  region_codebook2021.query(" `Category theme` == 'covid' | `Category theme`==''")
-demor =  region_codebook2021.query(" `Category theme` == 'demographics' | `Category theme`==''")
-naar =  region_codebook2021.query(" `Category theme` == 'norms, access, and agency' | `Category theme`==''")
-tcwr =  region_codebook2021.query(" `Category theme` == 'time spent, care, and work' | `Category theme`==''")
+covidr =  region_codebook2021.query(" `Category theme` == 'covid'")
+demor =  region_codebook2021.query(" `Category theme` == 'demographics'")
+naar =  region_codebook2021.query(" `Category theme` == 'norms, access, and agency'")
+tcwr =  region_codebook2021.query(" `Category theme` == 'time spent, care, and work'")
 def generate_covr_graph(id):
 
     return dcc.Graph(id='covr21-{}'.format(str(id)))

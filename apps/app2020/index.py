@@ -29,7 +29,7 @@ region_codebook2020 = region_codebook_df.query('Wave == "all" | Wave == "wave 1"
 country_codebook2020 = country_codebook_df.query('Wave == "all" | Wave == "wave 1"')
 
 covidc =  country_codebook2020.query(" `Category theme` == 'covid'")
-democ =  country_codebook2020.query(" `Category theme` == 'demographics'")
+democ =  country_codebook2020.query(" `Category theme` == 'demographics' & Variable != 'Gender'")
 naac =  country_codebook2020.query(" `Category theme` == 'norms, access, and agency'")
 tcwc =  country_codebook2020.query(" `Category theme` == 'time spent, care, and work'")
 
