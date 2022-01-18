@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from typing import Text
 from dash import dcc
 from dash import html
@@ -158,6 +159,8 @@ def session_store(year_index,ball,bcomp,mode,data):
             path='/apps/2021/compare'
 
         return [data,path]
+    else:
+        return[NULL,'/']
 
 
 
