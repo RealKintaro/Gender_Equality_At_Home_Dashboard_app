@@ -282,40 +282,60 @@ def display_pagerows(data):
 @app.callback(
     Output("demor_collap21", "is_open"),
     [Input("demor_collap21_btn", "n_clicks")],
+    [Input("covr_collap21_btn", "n_clicks")],
+    [Input("naar_collap21_btn", "n_clicks")],
+    [Input("tcwr_collap21_btn", "n_clicks")],
     [State("demor_collap21", "is_open")],
 )
-def toggle_demor_collap21(n, is_open):
+def toggle_demor_collap21(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open
 
 @app.callback(
     Output("covr_collap21", "is_open"),
     [Input("covr_collap21_btn", "n_clicks")],
+    [Input("demor_collap21_btn", "n_clicks")],
+    [Input("naar_collap21_btn", "n_clicks")],
+    [Input("tcwr_collap21_btn", "n_clicks")],
     [State("covr_collap21", "is_open")],
 )
-def toggle_covr_collap21(n, is_open):
+def toggle_covr_collap21(n,n1,n2,n3, is_open):
     if n:
         return not is_open
+    if is_open and n1 or n2 or n3:
+        return not is_open 
     return is_open
 
 @app.callback(
     Output("naar_collap21", "is_open"),
     [Input("naar_collap21_btn", "n_clicks")],
+    [Input("demor_collap21_btn", "n_clicks")],
+    [Input("covr_collap21_btn", "n_clicks")],
+    [Input("tcwr_collap21_btn", "n_clicks")],
     [State("naar_collap21", "is_open")],
 )
-def toggle_naar_collap21(n, is_open):
+def toggle_naar_collap21(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open
 
 @app.callback(
     Output("tcwr_collap21", "is_open"),
     [Input("tcwr_collap21_btn", "n_clicks")],
+    [Input("demor_collap21_btn", "n_clicks")],
+    [Input("naar_collap21_btn", "n_clicks")],
+    [Input("covr_collap21_btn", "n_clicks")],
     [State("tcwr_collap21", "is_open")],
 )
-def toggle_tcwr_collap21(n, is_open):
+def toggle_tcwr_collap21(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open
 
@@ -492,39 +512,59 @@ def tcwc_content(n_clicks,country):
 @app.callback(
     Output("democ_collap21", "is_open"),
     [Input("democ_collap21_btn", "n_clicks")],
+    [Input("covc_collap21_btn", "n_clicks")],
+    [Input("naac_collap21_btn", "n_clicks")],
+    [Input("tcwc_collap21_btn", "n_clicks")],
     [State("democ_collap21", "is_open")],
 )
-def toggle_democ_collap21(n, is_open):
+def toggle_democ_collap21(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open
 
 @app.callback(
     Output("covc_collap21", "is_open"),
     [Input("covc_collap21_btn", "n_clicks")],
+    [Input("democ_collap21_btn", "n_clicks")],
+    [Input("naac_collap21_btn", "n_clicks")],
+    [Input("tcwc_collap21_btn", "n_clicks")],
     [State("covc_collap21", "is_open")],
 )
-def toggle_covc_collap21(n, is_open):
+def toggle_covc_collap21(n,n1,n2,n3, is_open):
     if n:
         return not is_open
+    if is_open and n1 or n2 or n3:
+        return not is_open 
     return is_open
 
 @app.callback(
     Output("naac_collap21", "is_open"),
     [Input("naac_collap21_btn", "n_clicks")],
+    [Input("democ_collap21_btn", "n_clicks")],
+    [Input("covc_collap21_btn", "n_clicks")],
+    [Input("tcwc_collap21_btn", "n_clicks")],
     [State("naac_collap21", "is_open")],
 )
-def toggle_naac_collap21(n, is_open):
+def toggle_naac_collap21(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open
 
 @app.callback(
     Output("tcwc_collap21", "is_open"),
     [Input("tcwc_collap21_btn", "n_clicks")],
+    [Input("democ_collap21_btn", "n_clicks")],
+    [Input("naac_collap21_btn", "n_clicks")],
+    [Input("covc_collap21_btn", "n_clicks")],
     [State("tcwc_collap21", "is_open")],
 )
-def toggle_democ_collap21(n, is_open):
+def toggle_tcwc_collap21(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open

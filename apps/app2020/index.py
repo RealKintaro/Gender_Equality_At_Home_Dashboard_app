@@ -288,41 +288,61 @@ def display_pagerows(data):
 @app.callback(
     Output("demor_collap", "is_open"),
     [Input("demor_collap_btn", "n_clicks")],
+    [Input("covr_collap_btn", "n_clicks")],
+    [Input("naar_collap_btn", "n_clicks")],
+    [Input("tcwr_collap_btn", "n_clicks")],
     [State("demor_collap", "is_open")],
 )
-def toggle_demor_collap(n, is_open):
+def toggle_demor_collap(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open
 
 @app.callback(
     Output("covr_collap", "is_open"),
     [Input("covr_collap_btn", "n_clicks")],
+    [Input("demor_collap_btn", "n_clicks")],
+    [Input("naar_collap_btn", "n_clicks")],
+    [Input("tcwr_collap_btn", "n_clicks")],
     [State("covr_collap", "is_open")],
 )
-def toggle_covr_collap(n, is_open):
+def toggle_covr_collap(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open
 
 @app.callback(
     Output("naar_collap", "is_open"),
     [Input("naar_collap_btn", "n_clicks")],
+    [Input("demor_collap_btn", "n_clicks")],
+    [Input("covr_collap_btn", "n_clicks")],
+    [Input("tcwr_collap_btn", "n_clicks")],
     [State("naar_collap", "is_open")],
 )
-def toggle_naar_collap(n, is_open):
+def toggle_naar_collap(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open
 
 @app.callback(
     Output("tcwr_collap", "is_open"),
     [Input("tcwr_collap_btn", "n_clicks")],
+    [Input("demor_collap_btn", "n_clicks")],
+    [Input("covr_collap_btn", "n_clicks")],
+    [Input("naar_collap_btn", "n_clicks")],
     [State("tcwr_collap", "is_open")],
 )
-def toggle_tcwr_collap(n, is_open):
+def toggle_democ_collap(n,n1,n2,n3, is_open):
     if n:
         return not is_open
+    if is_open and n1 or n2 or n3:
+        return not is_open   
     return is_open
 
 @app.callback(
@@ -550,39 +570,59 @@ def tcwc_content(n_clicks,country):
 @app.callback(
     Output("democ_collap", "is_open"),
     [Input("democ_collap_btn", "n_clicks")],
+    [Input("covc_collap_btn", "n_clicks")],
+    [Input("naac_collap_btn", "n_clicks")],
+    [Input("tcwc_collap_btn", "n_clicks")],
     [State("democ_collap", "is_open")],
 )
-def toggle_democ_collap(n, is_open):
+def toggle_democ_collap(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open
 
 @app.callback(
     Output("covc_collap", "is_open"),
     [Input("covc_collap_btn", "n_clicks")],
+    [Input("democ_collap_btn", "n_clicks")],
+    [Input("naac_collap_btn", "n_clicks")],
+    [Input("tcwc_collap_btn", "n_clicks")],
     [State("covc_collap", "is_open")],
 )
-def toggle_covc_collap(n, is_open):
+def toggle_covc_collap(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open
 
 @app.callback(
     Output("naac_collap", "is_open"),
     [Input("naac_collap_btn", "n_clicks")],
+    [Input("democ_collap_btn", "n_clicks")],
+    [Input("covc_collap_btn", "n_clicks")],
+    [Input("tcwc_collap_btn", "n_clicks")],
     [State("naac_collap", "is_open")],
 )
-def toggle_naac_collap(n, is_open):
+def toggle_naac_collap(n,n1,n2,n3, is_open):
     if n:
+        return not is_open
+    if is_open and n1 or n2 or n3:
         return not is_open
     return is_open
 
 @app.callback(
     Output("tcwc_collap", "is_open"),
     [Input("tcwc_collap_btn", "n_clicks")],
+    [Input("democ_collap_btn", "n_clicks")],
+    [Input("covc_collap_btn", "n_clicks")],
+    [Input("naac_collap_btn", "n_clicks")],
     [State("tcwc_collap", "is_open")],
 )
-def toggle_democ_collap(n, is_open):
+def toggle_democ_collap(n,n1,n2,n3, is_open):
     if n:
         return not is_open
+    if is_open and n1 or n2 or n3:
+        return not is_open   
     return is_open
