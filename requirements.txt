@@ -3,3 +3,5 @@ pandas==1.3.4
 gunicorn
 dash-bootstrap-components
 openpyxl
+jsonmerge
+dash_table_experiments

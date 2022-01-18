@@ -11,6 +11,7 @@ from apps.app2020 import index as index2020
 from apps.app2021 import index as index2021
 
 
+app.config.suppress_callback_exceptions=True
 
 navbar = dbc.NavbarSimple(
     children=[
@@ -24,19 +25,43 @@ navbar = dbc.NavbarSimple(
 )
 
 layout = html.Div([
-    html.Div(id= 'page-content', children=[
-    dbc.Row([
-        dbc.Col( dcc.RadioItems(
-        id='year_index',
-        options=[{'label': 2020, 'value': 2020 } , {'label': 2021, 'value': 2021 }],
-    ), width={"size": 3}, ),
-        
-    dbc.Col( dcc.RadioItems(
-        id='mode',
-        options=[{'label': 'By Region', 'value': 1 } , {'label': 'By Country', 'value': 2 }],
-    ), width={"size": 3}, ),
-    ]),
-        ], className="row")
+
+    html.Div(
+        className="banner",
+        style={'backgroundColor': '#242a44', 'padding': '2em 0', 'marging': '0'},
+        children=[
+            html.H3(
+                children='DASHBOARD',
+                style={'textAlign': 'center', 'color': 'white'}
+            ),
+            html.H2(
+                children='Survey on Gender Equality at Home',
+                style={'textAlign': 'center', 'color': 'white'}
+            ),
+            html.H3(
+                children='Explore the country and region-level data from the 2020 and 2021 waves of the Survey on Gender Equality at Home.',
+                style={'textAlign': 'center', 'color': 'white', 'font-weight': 'bold'}
+            ),   
+        ],
+    ),
+    
+    html.Div(id='page-content page-content-select', children=[
+        dbc.Row([
+            html.Label(style={'font-weight': 'bold','font-size': '1.2em'}, children=['Select the survey year *']),
+            dbc.Col( dcc.RadioItems(
+                id='year_index',
+                options=[{'label': ' 2020', 'value': 2020 }, {'label': ' 2021', 'value': 2021 }],
+            ), width={"size": 3}, ),
+        ], className="row1"),
+
+        dbc.Row([
+            html.Label(style={'font-weight': 'bold','font-size': '1.2em'}, children=['Select country or region *']),
+            dbc.Col( dcc.RadioItems(
+                id='mode',
+                options=[{'label': ' By Region', 'value': 1 } , {'label': ' By Country', 'value': 2 }],
+            ), width={"size": 3}, ),
+        ], className="row2"),
+    ], className="row")
 
 ])
 

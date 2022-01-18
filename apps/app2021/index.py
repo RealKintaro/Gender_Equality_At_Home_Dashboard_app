@@ -69,26 +69,55 @@ def generate_tcwc_graph(id):
 
 region_row = html.Div([
     dbc.Row([
-        dbc.Col(html.Div([html.H5("Region:")]) ,width = {"offset": 1}),
-        dbc.Col( dcc.Dropdown(
-        id="regions_dropdown",
-        options=[{"label": x, "value": x} for x in regions],
-        value=regions[0],
-        clearable=False,
-    ), width={"size": 3}, ),
-        dbc.Col(dbc.Button(
-            "Ok", id="region_button", className="me-2", n_clicks=0
-        ))]),
-    
-    html.Div(
-    [
+        dbc.Col(html.Div([html.H5("Region :")])),
+        dbc.Col( 
+            dcc.Dropdown(
+                id="regions_dropdown",
+                options=[{"label": x, "value": x} for x in regions],
+                value=regions[0],
+                clearable=False,
+            )
+        ),
+    ], className="dim_dropdown"),
+
+    html.Div([
         dbc.Button(
             "Demographics",
             id="demor_collap21_btn",
-            className="mb-3",
+            className="mb-3 cat-btn",
             color="primary",
             n_clicks=0,
         ),
+
+        dbc.Button(
+            "Covid",
+            id="covr_collap21_btn",
+            className="mb-3 cat-btn",
+            color="primary",
+            n_clicks=0,
+        ),
+
+        dbc.Button(
+            "Norms, Access, and Agency",
+            id="naar_collap21_btn",
+            className="mb-3 cat-btn",
+            color="primary",
+            n_clicks=0,
+        ),
+
+        dbc.Button(
+            "Time spent, Care, and work",
+            id="tcwr_collap21_btn",
+            className="mb-3 cat-btn",
+            color="primary",
+            n_clicks=0,
+        ),
+    ],className="div_btns",
+),
+
+    html.Div(
+    [
+
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
                 dbc.Row(children=[
@@ -98,39 +127,17 @@ region_row = html.Div([
             id="demor_collap21",
             is_open=False,
         ),
-    ]
-),
 
-    html.Div(
-    [
-        dbc.Button(
-            "Covid",
-            id="covr_collap21_btn",
-            className="mb-3",
-            color="primary",
-            n_clicks=0,
-        ),
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
                 dbc.Row(children=[
                     generate_covr_graph(i) for i in range(0,len(covidr['Parameter or Survey Question'].str.strip().unique()))
-        ]),
+            ]),
             ]))),
             id="covr_collap21",
             is_open=False,
         ),
-    ]
-),
 
-    html.Div(
-    [
-        dbc.Button(
-            "Norms, Access, and Agency",
-            id="naar_collap21_btn",
-            className="mb-3",
-            color="primary",
-            n_clicks=0,
-        ),
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
                 dbc.Row(children=[
@@ -140,17 +147,7 @@ region_row = html.Div([
             id="naar_collap21",
             is_open=False,
         ),
-    ]
-),
-    html.Div(
-    [
-        dbc.Button(
-            "Time spent, Care, and work",
-            id="tcwr_collap21_btn",
-            className="mb-3",
-            color="primary",
-            n_clicks=0,
-        ),
+
         dbc.Collapse(
             dbc.Card(html.Div(children=[
                 dbc.Row(children=[
@@ -160,120 +157,116 @@ region_row = html.Div([
             id="tcwr_collap21",
             is_open=False,
         ),
+
     ]
-)
-])
+),
+
+],className="containner",)
 
 
 country_row = html.Div([
     dbc.Row([
-    dbc.Col(html.Div([html.H5("Country:")]) ,width = {"offset": 1} ),
-
-        dbc.Col( dcc.Dropdown(
-        id="countrys_dropdown",
-        options=[{"label": x, "value": x} for x in countrys],
-        value=countrys[0],
-        clearable=False,
-    ), width={"size": 3},),
-    dbc.Col(dbc.Button(
-            "Ok", id="country_button", className="me-2", n_clicks=0
-        ),),
-]),
+        dbc.Col(html.Div([html.H5("Country :")])),
+            dbc.Col( dcc.Dropdown(
+                id="countrys_dropdown",
+                options=[{"label": x, "value": x} for x in countrys],
+                value=countrys[0],
+                clearable=False,
+            )),
+    ], className="dim_dropdown"),
     
-    html.Div(
-    [
+    html.Div([
         dbc.Button(
             "Demographics",
             id="democ_collap21_btn",
-            className="mb-3",
+            className="mb-3 cat-btn",
             color="primary",
             n_clicks=0,
         ),
+
+        dbc.Button(
+            "Covid",
+            id="covc_collap21_btn",
+            className="mb-3 cat-btn",
+            color="primary",
+            n_clicks=0,
+        ),
+
+        dbc.Button(
+            "Norms, Access, and Agency",
+            id="naac_collap21_btn",
+            className="mb-3 cat-btn",
+            color="primary",
+            n_clicks=0,
+        ),
+
+        dbc.Button(
+            "Time spent, Care, and work",
+            id="tcwc_collap21_btn",
+            className="mb-3 cat-btn",
+            color="primary",
+            n_clicks=0,
+        ),
+    ],className="div_btns",
+),
+
+    html.Div(
+    [
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
                 dbc.Row(children=[
                     generate_democ_graph(i) for i in range(0,len(democ['Parameter or Survey Question'].str.strip().unique()))
-        ]),
+                ]),
             ]))),
             id="democ_collap21",
             is_open=False,
         ),
-    ]
-),
 
-    html.Div(
-    [
-        dbc.Button(
-            "Covid",
-            id="covc_collap21_btn",
-            className="mb-3",
-            color="primary",
-            n_clicks=0,
-        ),
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
                 dbc.Row(children=[
                     generate_covc_graph(i) for i in range(0,len(covidc['Parameter or Survey Question'].str.strip().unique()))
-        ]),
+                ]),
             ]))),
             id="covc_collap21",
             is_open=False,
         ),
-    ]
-),
 
-    html.Div(
-    [
-        dbc.Button(
-            "Norms, Access, and Agency",
-            id="naac_collap21_btn",
-            className="mb-3",
-            color="primary",
-            n_clicks=0,
-        ),
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
                 dbc.Row(children=[
                     generate_naac_graph(i) for i in range(0,len(naac['Parameter or Survey Question'].str.strip().unique()))
-        ]),
+                ]),
             ]))),
             id="naac_collap21",
             is_open=False,
         ),
-    ]
-),
-    html.Div(
-    [
-        dbc.Button(
-            "Time spent, Care, and work",
-            id="tcwc_collap21_btn",
-            className="mb-3",
-            color="primary",
-            n_clicks=0,
-        ),
+
         dbc.Collapse(
             dbc.Card(html.Div(children=[
                 dbc.Row(children=[
                     generate_tcwc_graph(i) for i in range(0,len(tcwc['Parameter or Survey Question'].str.strip().unique()))
-        ]),
+                ]),
             ])),
             id="tcwc_collap21",
             is_open=False,
         ),
     ]
-)
-])
+),
+
+],className="containner",)
 
 layout = html.Div([
-    html.H1('Survey on Gender Equality at Home YEAR: 2021', style={"textAlign": "center"}),
-
-    html.Div(id='countent2021', children=[
+    html.H3(
+        'Survey on Gender Equality at Home YEAR : 2021', 
+        style={"textAlign": "center"}
+    ),
+    html.Div(
+        id='countent2021', 
+        children=[
 
         ], className="row"),
-
-    
-
-])
+],className="head_title")
 
 
 
