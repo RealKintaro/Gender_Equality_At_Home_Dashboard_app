@@ -109,10 +109,11 @@ region_row = html.Div([
                 html.Div(children=[
                     html.H2("Demographics"),
                     dbc.Row(children=[
-                        dcc.RadioItems(
+                        dcc.Dropdown(
                             id='demorquestion20-radio',
                             options=[{'label': k, 'value': k} for k in demor['[old] Parameter or Survey Question'].unique()],
-                            value=demor['[old] Parameter or Survey Question'].unique()[0]
+                            value=demor['[old] Parameter or Survey Question'].unique()[0],
+                            clearable = False
                         ),     
                     ]),
                     dbc.Row(children=[
@@ -136,10 +137,11 @@ region_row = html.Div([
                 html.Div(children=[
                     html.H2("Covid"),
                     dbc.Row(children=[
-                        dcc.RadioItems(
+                        dcc.Dropdown(
                             id='covrquestion20-radio',
                             options=[{'label': k, 'value': k} for k in covidr['[old] Parameter or Survey Question'].unique()],
-                            value=covidr['[old] Parameter or Survey Question'].unique()[0]
+                            value=covidr['[old] Parameter or Survey Question'].unique()[0],
+                            clearable = False
                         ),     
                     ]),
                     dbc.Row(children=[
@@ -164,10 +166,11 @@ region_row = html.Div([
                 html.Div(children=[
                     html.H2("Norms, Access, and Agency"),
                     dbc.Row(children=[
-                        dcc.RadioItems(
+                        dcc.Dropdown(
                             id='naarquestion20-radio',
                             options=[{'label': k, 'value': k} for k in naar['[old] Parameter or Survey Question'].unique()],
-                            value=naar['[old] Parameter or Survey Question'].unique()[0]
+                            value=naar['[old] Parameter or Survey Question'].unique()[0],
+                            clearable = False
                         ),     
                     ]),
                     dbc.Row(children=[
@@ -192,10 +195,11 @@ region_row = html.Div([
                 html.Div(children=[
                     html.H2("Time spent, Care, and work"),
                     dbc.Row(children=[
-                        dcc.RadioItems(
+                        dcc.Dropdown(
                             id='tcwrquestion20-radio',
                             options=[{'label': k, 'value': k} for k in tcwr['[old] Parameter or Survey Question'].unique()],
-                            value=naar['[old] Parameter or Survey Question'].unique()[0]
+                            value=naar['[old] Parameter or Survey Question'].unique()[0],
+                            clearable = False
                         ),     
                     ]),
                     dbc.Row(children=[
@@ -285,10 +289,11 @@ country_row = html.Div([
                 html.Div(children=[
                     html.H2("Demographics"),
                     dbc.Row(children=[
-                        dcc.RadioItems(
+                        dcc.Dropdown(
                             id='democquestion20-radio',
                             options=[{'label': k, 'value': k} for k in democ['[old] Parameter or Survey Question'].unique()],
-                            value=democ['[old] Parameter or Survey Question'].unique()[0]
+                            value=democ['[old] Parameter or Survey Question'].unique()[0],
+                            clearable = False
                         ),     
                     ]),
                     dbc.Row(children=[
@@ -314,10 +319,11 @@ country_row = html.Div([
                 html.Div(children=[
                     html.H2("Covid"),
                     dbc.Row(children=[
-                        dcc.RadioItems(
+                        dcc.Dropdown(
                             id='covcquestion20-radio',
                             options=[{'label': k, 'value': k} for k in covidc['[old] Parameter or Survey Question'].unique()],
-                            value=covidc['[old] Parameter or Survey Question'].unique()[0]
+                            value=covidc['[old] Parameter or Survey Question'].unique()[0],
+                            clearable = False
                         ),     
                     ]),
                     dbc.Row(children=[
@@ -343,10 +349,11 @@ country_row = html.Div([
                 html.Div(children=[
                     html.H2("Norms, Access, and Agency"),
                     dbc.Row(children=[
-                        dcc.RadioItems(
+                        dcc.Dropdown(
                             id='naacquestion20-radio',
                             options=[{'label': k, 'value': k} for k in naac['[old] Parameter or Survey Question'].unique()],
-                            value=naac['[old] Parameter or Survey Question'].unique()[0]
+                            value=naac['[old] Parameter or Survey Question'].unique()[0],
+                            clearable = False
                         ),     
                     ]),
                     dbc.Row(children=[
@@ -372,10 +379,11 @@ country_row = html.Div([
                 html.Div(children=[
                     html.H2("Time spent, Care, and work"),
                     dbc.Row(children=[
-                        dcc.RadioItems(
+                        dcc.Dropdown(
                             id='tcwcquestion20-radio',
                             options=[{'label': k, 'value': k} for k in tcwc['[old] Parameter or Survey Question'].unique()],
-                            value=tcwc['[old] Parameter or Survey Question'].unique()[0]
+                            value=tcwc['[old] Parameter or Survey Question'].unique()[0],
+                            clearable = False
                         ),     
                     ]),
                     dbc.Row(children=[
