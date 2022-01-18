@@ -13,7 +13,7 @@ from apps.app2021 import index as index2021
 from apps.app2021 import compare as compare2021
 
 
-app.config.suppress_callback_exceptions=False
+app.config.suppress_callback_exceptions=True
 
 navbar = dbc.NavbarSimple(
     children=[
@@ -181,4 +181,4 @@ def display_page(pathname):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
