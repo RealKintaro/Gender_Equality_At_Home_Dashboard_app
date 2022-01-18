@@ -120,6 +120,7 @@ region_row = html.Div([
 
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
+                html.H2("Demographics"),
                 dbc.Row(children=[
                     generate_demor_graph(i) for i in range(0,len(demor['Parameter or Survey Question'].str.strip().unique()))
         ]),
@@ -130,6 +131,7 @@ region_row = html.Div([
 
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
+                html.H2("Covid"),
                 dbc.Row(children=[
                     generate_covr_graph(i) for i in range(0,len(covidr['Parameter or Survey Question'].str.strip().unique()))
             ]),
@@ -140,6 +142,7 @@ region_row = html.Div([
 
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
+                html.H2("Norms, Access, and Agency"),
                 dbc.Row(children=[
                     generate_naar_graph(i) for i in range(0,len(naar['Parameter or Survey Question'].str.strip().unique()))
         ]),
@@ -150,6 +153,7 @@ region_row = html.Div([
 
         dbc.Collapse(
             dbc.Card(html.Div(children=[
+                html.H2("Time spent, Care, and work"),
                 dbc.Row(children=[
                     generate_tcwr_graph(i) for i in range(0,len(tcwr['Parameter or Survey Question'].str.strip().unique()))
         ]),
@@ -214,6 +218,7 @@ country_row = html.Div([
     [
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
+                html.H2("Demographics"),
                 dbc.Row(children=[
                     generate_democ_graph(i) for i in range(0,len(democ['Parameter or Survey Question'].str.strip().unique()))
                 ]),
@@ -224,6 +229,7 @@ country_row = html.Div([
 
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
+                html.H2("Covid"),
                 dbc.Row(children=[
                     generate_covc_graph(i) for i in range(0,len(covidc['Parameter or Survey Question'].str.strip().unique()))
                 ]),
@@ -234,6 +240,7 @@ country_row = html.Div([
 
         dbc.Collapse(
             dbc.Card(dbc.CardBody(html.Div(children=[
+                html.H2("Norms, Access, and Agency"),
                 dbc.Row(children=[
                     generate_naac_graph(i) for i in range(0,len(naac['Parameter or Survey Question'].str.strip().unique()))
                 ]),
@@ -244,6 +251,7 @@ country_row = html.Div([
 
         dbc.Collapse(
             dbc.Card(html.Div(children=[
+                html.H2("Time spent, Care, and work"),
                 dbc.Row(children=[
                     generate_tcwc_graph(i) for i in range(0,len(tcwc['Parameter or Survey Question'].str.strip().unique()))
                 ]),
