@@ -158,8 +158,7 @@ def session_store(year_index,ball,bcomp,mode,data):
             path='/apps/2021/compare'
 
         return [data,path]
-    else:
-        raise PreventUpdate
+
 
 
 
