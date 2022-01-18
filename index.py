@@ -160,6 +160,7 @@ def session_store(year_index,ball,bcomp,mode,data):
 
         return [data,path]
     else:
+        raise PreventUpdate
         return[NULL,'/']
 
 
