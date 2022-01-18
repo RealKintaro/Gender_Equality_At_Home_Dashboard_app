@@ -6,4 +6,5 @@ app = dash.Dash(__name__,suppress_callback_exceptions=False,
                                     'content': 'width=device-width, initial-scale=1.0'}],
                         external_stylesheets=[dbc.themes.BOOTSTRAP]
                 )
+app.title = "Survey on Gender Equality At Home"
 server = app.server
