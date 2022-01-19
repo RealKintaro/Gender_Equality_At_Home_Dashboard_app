@@ -48,13 +48,6 @@
   text-decoration: none;
 }
 
-.banner {
-  color: red;
-}
-
-#page-content-select label {
-  
-}
 #page-content-select #mode, #year_index {
   padding-top: .5em;
   font-size: 1.2em;
@@ -79,6 +72,7 @@
 
 .containner {
   padding-top: 3em;
+  text-align: center;
 }
 
 
@@ -93,6 +87,7 @@
 
 .dim_dropdown {
   text-align: center;
+  margin-right: 185px;
   background-color: #242a44;
 }
 .dim_dropdown #regions_dropdown{
@@ -103,7 +98,7 @@
 }
 .dim_dropdown h5{
   color: white;
-  text-align: center;
+  float: right;
 }
 
 
@@ -112,6 +107,7 @@
   padding: 2em 0 3em 0;
   text-align: center;
   background-color: #242a44;
+  margin-left: 60px;
 }
 .div_btns .cat-btn{
   cursor: pointer;
@@ -125,10 +121,21 @@
 }
 
 
-
-
-
-
+.plots_containner {
+  padding-top: 1em;
+}
+.plots_containner h3{
+  color: #0a58ca;
+}
+.plots_containner .plot_div {
+  width: 50%;
+  position: relative;
+}
+/* .plots_containner .plot2_div {
+  width: 50%;
+  position: relative;
+} */
+/* float: right; */
 
 
 

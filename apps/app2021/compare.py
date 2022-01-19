@@ -120,12 +120,12 @@ region_row = html.Div([
                         dbc.Col([
                             html.H3('Region 1'),
                             dcc.Graph(id='demorquestion21-graph1')
-                        ]),
+                        ],className='plot_div',),
                         dbc.Col([
                             html.H3('Region 2'),
                             dcc.Graph(id='demorquestion21-graph2')
-                        ]),
-                    ])
+                        ],className='plot_div',),
+                    ],className='plots_containner',)
                 ])
             )),
             id="demor_collapcom21",
@@ -148,12 +148,12 @@ region_row = html.Div([
                         dbc.Col([
                             html.H3('Region 1'),
                             dcc.Graph(id='covrquestion21-graph1')
-                        ]),
+                        ],className='plot_div',),
                         dbc.Col([
                             html.H3('Region 2'),
                             dcc.Graph(id='covrquestion21-graph2')
-                        ]),
-                    ])
+                        ],className='plot_div',),
+                    ],className='plots_containner',)
                 ])
             )),
             id="covr_collapcom21",
@@ -177,12 +177,12 @@ region_row = html.Div([
                         dbc.Col([
                             html.H3('Region 1'),
                             dcc.Graph(id='naarquestion21-graph1')
-                        ]),
+                        ],className='plot_div',),
                         dbc.Col([
                             html.H3('Region 2'),
                             dcc.Graph(id='naarquestion21-graph2')
-                        ]),
-                    ])
+                        ],className='plot_div',),
+                    ],className='plots_containner',)
                 ])
             )),
             id="naar_collapcom21",
@@ -206,12 +206,12 @@ region_row = html.Div([
                         dbc.Col([
                             html.H3('Region 1'),
                             dcc.Graph(id='tcwrquestion21-graph1')
-                        ]),
+                        ],className='plot_div',),
                         dbc.Col([
                             html.H3('Region 2'),
                             dcc.Graph(id='tcwrquestion21-graph2')
-                        ]),
-                    ])
+                        ],className='plot_div',),
+                    ],className='plots_containner',)
                 ])
                 
             ),
@@ -300,12 +300,12 @@ country_row = html.Div([
                         dbc.Col([
                             html.H3('Country 1'),
                             dcc.Graph(id='democquestion21-graph1')
-                        ]),
+                        ],className='plot_div',),
                         dbc.Col([
                             html.H3('Country 2'),
                             dcc.Graph(id='democquestion21-graph2')
-                        ]),
-                    ])
+                        ],className='plot_div',),
+                    ],className='plots_containner',)
                 ])
 
             )),
@@ -330,12 +330,12 @@ country_row = html.Div([
                         dbc.Col([
                             html.H3('Country 1'),
                             dcc.Graph(id='covcquestion21-graph1')
-                        ]),
+                        ],className='plot_div',),
                         dbc.Col([
                             html.H3('Country 2'),
                             dcc.Graph(id='covcquestion21-graph2')
-                        ]),
-                    ])
+                        ],className='plot_div',),
+                    ],className='plots_containner',)
                 ])
 
             )),
@@ -360,12 +360,12 @@ country_row = html.Div([
                         dbc.Col([
                             html.H3('Country 1'),
                             dcc.Graph(id='naacquestion21-graph1')
-                        ]),
+                        ],className='plot_div',),
                         dbc.Col([
                             html.H3('Country 2'),
                             dcc.Graph(id='naacquestion21-graph2')
-                        ]),
-                    ])
+                        ],className='plot_div',),
+                    ],className='plots_containner',)
                 ])
 
             )),
@@ -390,12 +390,12 @@ country_row = html.Div([
                         dbc.Col([
                             html.H3('Country 1'),
                             dcc.Graph(id='tcwcquestion21-graph1')
-                        ]),
+                        ],className='plot_div',),
                         dbc.Col([
                             html.H3('Country 2'),
                             dcc.Graph(id='tcwcquestion21-graph2')
-                        ]),
-                    ])
+                        ],className='plot_div',),
+                    ],className='plots_containner',)
                 ])
 
             ),
@@ -536,7 +536,7 @@ def demor_content1(q,region):
     
     if len(mask1) != 0:
             fig =  px.bar(df_region[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -557,7 +557,7 @@ def demor_content2(q,region):
     
     if len(mask1) != 0:
             fig =  px.bar(df_region[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -580,7 +580,7 @@ def demor_content1(q,region):
     
     if len(mask1) != 0:
             fig =  px.bar(df_region[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -601,7 +601,7 @@ def demor_content2(q,region):
     
     if len(mask1) != 0:
             fig =  px.bar(df_region[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -623,7 +623,7 @@ def demor_content1(q,region):
     
     if len(mask1) != 0:
             fig =  px.bar(df_region[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -644,7 +644,7 @@ def demor_content2(q,region):
     
     if len(mask1) != 0:
             fig =  px.bar(df_region[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -667,7 +667,7 @@ def demor_content1(q,region):
     
     if len(mask1) != 0:
             fig =  px.bar(df_region[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -688,7 +688,7 @@ def demor_content2(q,region):
     
     if len(mask1) != 0:
             fig =  px.bar(df_region[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -711,7 +711,7 @@ def democ_content1(q,country):
     
     if len(mask1) != 0:
             fig =  px.bar(df_country[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -732,7 +732,7 @@ def democ_content2(q,country):
     
     if len(mask1) != 0:
             fig =  px.bar(df_country[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -755,7 +755,7 @@ def covc_content1(q,country):
     
     if len(mask1) != 0:
             fig =  px.bar(df_country[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -776,7 +776,7 @@ def covc_content2(q,country):
     
     if len(mask1) != 0:
             fig =  px.bar(df_country[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -798,7 +798,7 @@ def tcwc_content1(q,country):
     
     if len(mask1) != 0:
             fig =  px.bar(df_country[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -819,7 +819,7 @@ def tcwc_content2(q,country):
     
     if len(mask1) != 0:
             fig =  px.bar(df_country[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -842,7 +842,7 @@ def naac_content1(q,country):
     
     if len(mask1) != 0:
             fig =  px.bar(df_country[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
@@ -863,7 +863,7 @@ def naac_content2(q,country):
     
     if len(mask1) != 0:
             fig =  px.bar(df_country[mask], x="Gender", y= mask1[0], 
-                barmode="group",title= q)
+                barmode="group")
             return fig
     else:
             return
